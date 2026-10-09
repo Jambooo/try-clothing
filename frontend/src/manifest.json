@@ -1,0 +1,19 @@
+{
+  "name": "衣见 AI",
+  "appid": "__UNI__YIJIAN_DEMO",
+  "description": "AI 人像与服饰试穿应用",
+  "versionName": "1.0.0",
+  "versionCode": 10000,
+  "h5": {
+    "title": "衣见 AI"
+  },
+  "mp-weixin": {
+    "appid": "",
+    "setting": {
+      "urlCheck": true
+    }
+  },
+  "uniStatistics": {
+    "enable": false
+  }
+}

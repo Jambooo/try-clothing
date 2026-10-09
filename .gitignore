@@ -1,0 +1,13 @@
+.env
+backend/.env
+backend/data/
+backend/.venv/
+__pycache__/
+node_modules/
+frontend/dist/
+
+.env.*
+!**/.env.example
+
+# Local preview screenshots
+demo-mobile.png

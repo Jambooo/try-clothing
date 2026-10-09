@@ -1,0 +1,6 @@
+<script setup lang="ts">
+import FlowHeader from '../../components/FlowHeader.vue'
+import { useStudio } from '../../studio'
+const {history,labels,refresh,openTask,imageUrl,networkError,loading,hasMore,moreHistory,removeRecord}=useStudio()
+</script>
+<template><view class="shell"><FlowHeader title="试穿记录" subtitle="每一套搭配，都可以回来查看" :back="true"/><view v-if="networkError" class="notice"><text>{{networkError}}</text><text class="link" @click="refresh">重试连接</text></view><view class="card"><view v-for="t in history" :key="t.id" class="history-item" @click="openTask(t)"><image v-if="t.result" :src="imageUrl(t.result)" mode="aspectFit"/><view v-else class="history-placeholder">✦</view><view><text>{{t.kind==='portrait'?'AI 人像':'试穿效果'}} · {{labels[t.status]}}</text><text class="muted">{{new Date(t.created*1000).toLocaleString()}}</text><text v-if="t.error" class="error">{{t.error}}</text></view><view><text class="link">查看 ›</text><text v-if="['succeeded','failed','canceled'].includes(t.status)" class="link" @click.stop="removeRecord(t)">删除</text></view></view><view v-if="!history.length" class="waiting">{{loading?'正在加载…':'还没有生成记录，开始你的第一套搭配吧。'}}</view><button v-if="hasMore" class="secondary" :disabled="loading" @click="moreHistory">{{loading?'加载中…':'加载更多'}}</button></view></view></template>
